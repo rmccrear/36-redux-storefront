@@ -1,10 +1,10 @@
 
 export const Category = (props) => {
-  const handleSelectCategory = (slug) => {
-    props.selectCategory(slug);
+  const handleSelectCategory = () => {
+    props.selectCategory(props.category.slug);
   }
   return (
-    <button className="category-button" onClick={handleSelectCategory(props.category.slug)}>
+    <button className="category-button" onClick={ handleSelectCategory }>
       { props.category.displayName }
     </button>
   );
