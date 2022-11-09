@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/36-redux-storefront/static/css/main.e70ac6b6.css",
-    "main.js": "/36-redux-storefront/static/js/main.abab2c8e.js",
+    "main.js": "/36-redux-storefront/static/js/main.998b38bb.js",
     "static/css/274.d1f96813.chunk.css": "/36-redux-storefront/static/css/274.d1f96813.chunk.css",
     "static/js/274.c6a00cd8.chunk.js": "/36-redux-storefront/static/js/274.c6a00cd8.chunk.js",
     "static/js/787.db947df2.chunk.js": "/36-redux-storefront/static/js/787.db947df2.chunk.js",
     "index.html": "/36-redux-storefront/index.html",
     "main.e70ac6b6.css.map": "/36-redux-storefront/static/css/main.e70ac6b6.css.map",
-    "main.abab2c8e.js.map": "/36-redux-storefront/static/js/main.abab2c8e.js.map",
+    "main.998b38bb.js.map": "/36-redux-storefront/static/js/main.998b38bb.js.map",
     "274.d1f96813.chunk.css.map": "/36-redux-storefront/static/css/274.d1f96813.chunk.css.map",
     "274.c6a00cd8.chunk.js.map": "/36-redux-storefront/static/js/274.c6a00cd8.chunk.js.map",
     "787.db947df2.chunk.js.map": "/36-redux-storefront/static/js/787.db947df2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e70ac6b6.css",
-    "static/js/main.abab2c8e.js"
+    "static/js/main.998b38bb.js"
   ]
 }
