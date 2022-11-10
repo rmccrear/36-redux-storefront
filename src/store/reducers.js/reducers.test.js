@@ -1,5 +1,5 @@
-import { reducer } from './';
-import { items, allCategories } from '../__fixtures__';
+import reducer from '.';
+import { items, allCategories } from '../../__fixtures__';
 
 describe('App State Reducers', () => {
   test('should set catalog filled with items.', () => {

@@ -13,19 +13,52 @@ function setCatalog(catalogState, catalogItems) {
   return catalogItems;
 }
 
+export function setCatalogAction(catalogItems) {
+  return {
+    type: 'SET_CATALOG',
+    payload: {
+      catalog: catalogItems
+    }
+  }
+}
+
 function setCategories(categoryState, categories) {
   return categories;
+}
+
+export function setCategoriesAction(categories) {
+  return {
+    type: 'SET_CATEGORIES',
+    payload: {
+      categories
+    }
+  }
 }
 
 function setCurrentCategory(currentCategoryState, currentCategory) {
   return currentCategory;
 }
 
+export function setCurrentCategoryAction(currentCategory) {
+  return {
+    type: 'VIEW_CATEGORY',
+    payload: { currentCategory }
+  }
+}
+
+
 function addToCart(cart, item_id) {
   if (cart[item_id]) {
     return { ...cart, [item_id]: { quantity: cart[item_id].quantity + 1 } };
   } else {
     return { ...cart, [item_id]: { quantity: 1 } };
+  }
+}
+
+export function addToCartAction(item_id) {
+  return {
+    type: 'ADD_TO_CART',
+    payload: { item_id }
   }
 }
 
@@ -39,11 +72,25 @@ function removeFromCart(cart, item_id) {
   }
 }
 
-function viewItemDetails(viewItemDetailsState, itemId) {
-  return itemId;
+export function removeFromCartAction(item_id) {
+  return {
+    type: 'REMOVE_FROM_CART',
+    payload: { item_id }
+  }
 }
 
-export const reducer = (state = initialState, action) => { 
+function viewItemDetails(viewItemDetailsState, item_id) {
+  return item_id;
+}
+
+export function viewItemDetailsAction(item_id) {
+  return {
+    type: 'VIEW_ITEM_DETAILS',
+    payload: { item_id }
+  }
+}
+
+export default function reducer (state = initialState, action) { 
   if (!action) return state;
   switch (action.type) {
     case 'SET_CATALOG':
