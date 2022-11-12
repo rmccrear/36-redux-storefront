@@ -1,13 +1,13 @@
 export const items = [{
   id: 1,
-  imgUrl: 'IMG1.jpg',
+  imgUrl: 'https://picsum.photos/200',
   title: 'Item 1',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',
   category: 'electronics'
 }, {
   id: 2,
-  imgUrl: 'IMG2.jpg',
+  imgUrl: 'https://picsum.photos/200',
   title: 'Item 2',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',
@@ -15,7 +15,7 @@ export const items = [{
 },
 {
   id: 3,
-  imgUrl: 'IMG3.jpg',
+  imgUrl: 'https://picsum.photos/200',
   title: 'Item 3',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',

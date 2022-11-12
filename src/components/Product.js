@@ -1,3 +1,4 @@
+import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 const Product = (props) => {
   const handleViewDetails = () => {
@@ -7,16 +8,25 @@ const Product = (props) => {
     props.addToCart(props.product.id);
   }
   return (
-    <div>
-      <h3>{props.product.title}</h3>
-      <p>
-        { props.product.shortDescription }
-      </p>
+    <Card variant="outlined">
+      <CardMedia
+        component="img"
+        alt={props.product.title}
+        image={ props.product.imgUrl }
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h1">
+          {props.product.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          { props.product.shortDescription }
+        </Typography>
       <div>
-        <span onClick={ handleAddToCart }>Add to cart</span>
-        <span onClick={ handleViewDetails }>details...</span>
+        <Button onClick={ handleAddToCart }>Add to cart</Button>
+        <Button onClick={ handleViewDetails }>details...</Button>
       </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

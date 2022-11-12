@@ -21,7 +21,7 @@ describe('Product Details Component', () => {
   test('should call closeDetails on click', async () => {
     const product = items[0];
     render(<ProductDetails product={product} closeDetails={closeDetails} addToCart={ addToCart } />);
-    const button = screen.getByText("X");
+    const button = screen.getByTestId("close-details-button");
     await userEvent.click(button);
     expect(closeDetails).toBeCalled();
   });

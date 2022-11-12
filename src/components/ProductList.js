@@ -1,4 +1,7 @@
+import { Grid } from "@mui/material";
 import Product from "./Product";
+
+import "./ProductList.scss";
 
 const ProductList = (props) => {
   const { products, addToCart, viewDetails, currentCategory } = props;
@@ -19,7 +22,9 @@ const ProductList = (props) => {
   return (
     <div>
       <h2>{ props.currentCategory }</h2>
-      { displayProducts(products) }
+      <Grid container spacing={2} className="product-list">
+        { displayProducts(products) }
+      </Grid>
     </div>
   );
 }

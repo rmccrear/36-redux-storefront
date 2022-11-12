@@ -1,12 +1,13 @@
+import { Button } from "@mui/material";
 
 export const Category = (props) => {
   const handleSelectCategory = () => {
     props.selectCategory(props.category.slug);
   }
   return (
-    <button className="category-button" onClick={ handleSelectCategory }>
+    <Button variant="text" className="category-button" onClick={ handleSelectCategory }>
       { props.category.displayName }
-    </button>
+    </Button>
   );
 }
 

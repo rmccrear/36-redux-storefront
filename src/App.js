@@ -1,3 +1,5 @@
+import { Container } from '@mui/system';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CategoryChooser from './components/CategoryChooser';
@@ -64,14 +66,14 @@ function App() {
 
   return (
       <div className="App">
+      <Container maxWidth="sm">
+
         <Header shopName={ shopName }></Header>
         <CategoryChooser categories={categories} selectCategory={ selectCategory } />
-      {viewingItem ?
         <ProductDetails product={viewingItem} closeDetails={handleCloseDetails} /> 
-        : ''
-      }
         <ProductList products={catalog} currentCategory={currentCategory} addToCart={addToCart} viewDetails={ viewDetails } />
         <Footer />
+      </Container>
       </div>
   );
 }
