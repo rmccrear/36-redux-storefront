@@ -1,6 +1,6 @@
 # Redux Storefront
 
-This is a basic storefront app the demonstrates the use of redux in a react app. The functionality is details in the diagrams below.
+This is a basic storefront app the demonstrates the use of redux in a react app. The functionality is detailed in the diagrams below.
 
 ### Diagram
 
