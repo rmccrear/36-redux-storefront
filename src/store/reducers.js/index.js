@@ -79,8 +79,10 @@ export function removeFromCartAction(item_id) {
   }
 }
 
-function viewItemDetails(viewItemDetailsState, item_id) {
-  return item_id;
+function viewItemDetails(state, item_id) {
+  const catalog = state.catalog;
+  const product = catalog.find(p => p.id === item_id);
+  return product;
 }
 
 export function viewItemDetailsAction(item_id) {
@@ -121,7 +123,7 @@ export default function reducer (state = initialState, action) {
     case 'VIEW_ITEM_DETAILS':
       return {
         ...state,
-        viewingItem: viewItemDetails(state.viewingItem, action.payload.item_id)
+        viewingItem: viewItemDetails(state, action.payload.item_id)
       }
 
     default:

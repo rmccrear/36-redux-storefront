@@ -60,10 +60,13 @@ describe('App State Reducers', () => {
   test('should set view item details', () => {
     const item_id = 1;
     const action = { type: 'VIEW_ITEM_DETAILS', payload: { item_id: item_id } };
+    const actionSetCatalog = { type: 'SET_CATALOG', payload: { catalog: items } };
     const initialState = reducer();
-    const expectedState = { ...initialState, viewingItem: 1 };
+    const expectedState = { ...initialState, viewingItem: items[0] };
 
-    const state = reducer(initialState, action);
+    let state = initialState;
+    state = reducer(state, actionSetCatalog);
+    state = reducer(state, action);
     expect(state.viewingItem).toEqual(expectedState.viewingItem);
   });
 

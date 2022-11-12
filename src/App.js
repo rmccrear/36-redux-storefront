@@ -8,21 +8,18 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setCatalog, setCategories, setCurrentCategory
+  setCatalog, setCategories, setCurrentCategory, viewItemDetails
 } from './store';
 
 import './App.css';
 
 import { allCategories, items } from './__fixtures__';
+import ProductDetails from './components/ProductDetails';
 
 const shopName = "Fancy Teas";
 
 const addToCart = (id) => {
   console.log('add to cart:', id);
-}
-
-const viewDetails = (id) => {
-  console.log('view details:', id);
 }
 
 const fetchCatalog = async () => {
@@ -36,8 +33,10 @@ function App() {
   const dispatch = useDispatch();
   const catalog = useSelector(state => state.catalog);
   const categories = useSelector(state => state.categories);
+
   const currentCategory = useSelector((state) => state.currentCategory );
 
+  const viewingItem = useSelector(state => state.viewingItem);
   useEffect(() => {
     (async () => {
       const catalog = await fetchCatalog();
@@ -46,15 +45,31 @@ function App() {
       dispatch(setCategories(categories));
     })();
   }, [dispatch]);
+
   // const currentCategory = 'home-decor';
   const selectCategory = (slug) => {
     dispatch(setCurrentCategory(slug));
+  }
+
+  const viewDetails = (id) => {
+    console.log('view details:', id);
+    const action = viewItemDetails(id);
+    dispatch(action);
+  }
+
+  const handleCloseDetails = () => {
+    const action = viewItemDetails(null);
+    dispatch(action);
   }
 
   return (
       <div className="App">
         <Header shopName={ shopName }></Header>
         <CategoryChooser categories={categories} selectCategory={ selectCategory } />
+      {viewingItem ?
+        <ProductDetails product={viewingItem} closeDetails={handleCloseDetails} /> 
+        : ''
+      }
         <ProductList products={catalog} currentCategory={currentCategory} addToCart={addToCart} viewDetails={ viewDetails } />
         <Footer />
       </div>
