@@ -1,0 +1,9 @@
+@import "../theme.scss";
+
+.header {
+  @include headerTheme;
+}
+
+.h1 {
+  padding: 20px;
+}
