@@ -31,7 +31,9 @@ describe('App State Reducers', () => {
 
   test('should add item to cart', () => {
     const action = { type: 'ADD_TO_CART', payload: {item_id: 1} }
-    const initialState = reducer();
+    let initialState = reducer();
+    const setCatalogAction = { type: 'SET_CATALOG', payload: {catalog: items} }
+    initialState = reducer(initialState, setCatalogAction);
     const expectedState = { ...initialState, cart: { 1: {quantity: 1} } };
 
     const state = reducer(initialState, action);
@@ -41,7 +43,9 @@ describe('App State Reducers', () => {
 
   test('should remove item from cart', () => {
     const action = { type: 'ADD_TO_CART', payload: {item_id: 1} }
-    const initialState = reducer();
+    let initialState = reducer();
+    const setCatalogAction = { type: 'SET_CATALOG', payload: {catalog: items} }
+    initialState = reducer(initialState, setCatalogAction);
     const expectedState = { ...initialState, cart: { 1: {quantity: 1} } };
 
     let state = reducer(initialState, action);
