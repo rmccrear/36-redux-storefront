@@ -1,5 +1,7 @@
 # Redux Storefront
 
+![tests badge](https://github.com/rmccrear/36-redux-storefront/actions/workflows/node.js.yml/badge.svg)
+
 This is a basic storefront app the demonstrates the use of redux in a react app. The functionality is detailed in the diagrams below.
 
 ### Diagram
