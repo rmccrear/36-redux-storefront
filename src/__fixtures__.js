@@ -4,14 +4,16 @@ export const items = [{
   title: 'Item 1',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',
-  category: 'electronics'
+  category: 'electronics',
+  inventory: 100
 }, {
   id: 2,
   imgUrl: 'https://picsum.photos/200',
   title: 'Item 2',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',
-  category: 'electronics'
+  category: 'electronics',
+  inventory: 100
 },
 {
   id: 3,
@@ -19,7 +21,17 @@ export const items = [{
   title: 'Item 3',
   shortDescription: 'An item',
   description: 'An item, lorem ipsum',
-  category: 'home-decor'
+  category: 'home-decor',
+  inventory: 1
+},
+{
+  id: 4,
+  imgUrl: 'https://picsum.photos/200',
+  title: 'Item 4',
+  shortDescription: 'An item',
+  description: 'An item, lorem ipsum',
+  category: 'lawn-and-garden',
+  inventory: 0
 }
 ];
 

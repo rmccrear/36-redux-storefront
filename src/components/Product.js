@@ -22,7 +22,10 @@ const Product = (props) => {
           { props.product.shortDescription }
         </Typography>
       <div>
-        <Button onClick={ handleAddToCart }>Add to cart</Button>
+          {props.product.inventory > 0 ?
+            <Button onClick={handleAddToCart}>Add to cart</Button>
+            : <span>out of stock</span>
+          }
         <Button onClick={ handleViewDetails }>details...</Button>
       </div>
       </CardContent>

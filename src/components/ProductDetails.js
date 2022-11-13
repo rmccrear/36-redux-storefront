@@ -15,21 +15,24 @@ const ProductDetails = (props) => {
             <CloseIcon />
         </IconButton>
         <Typography gutterBottom variant="h2" component="div">
-          {props.product?.title}
+          {product?.title}
         </Typography>
       </DialogTitle>
       <DialogContent>
         <Card variant="outline">
           <CardMedia
             component="img"
-            alt={props.product?.title}
-            image={ props.product?.imgUrl }
+            alt={product?.title}
+            image={ product?.imgUrl }
           />
           <CardContent>
             <h3>{ product?.shortDescription }</h3>
             <p>{ product?.description }</p>
             <div>
-              <Button onClick={handleAddToCart}>Add to cart</Button>
+              { product?.inventory > 0 ?
+                <Button onClick={handleAddToCart}>Add to cart</Button>
+                : <span>Out of stock</span>
+              }
             </div>
           </CardContent>
         </Card>

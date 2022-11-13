@@ -3,7 +3,7 @@ const initialState = {
   catalog: [],
   categories: [],
   currentCategory: 'ALL',
-  cart: [],
+  cart: {},
   viewingItem: null,
   listOffset: 0,
   listPaginationLength: 10
@@ -55,11 +55,67 @@ function addToCart(cart, item_id) {
   }
 }
 
+function addToCartDecrementInventory(state, item_id) {
+  const catalog = state.catalog;
+  const cart = state.cart;
+  const item = checkInventory(catalog, item_id);
+  if (item && item.inventory > 0){
+    const newCart = addToCart(cart, item.id);
+    const newCatalog = decrementInventory(catalog, item.id);
+    return {...state, cart: newCart, catalog: newCatalog}
+  }
+  return state;
+}
+
+function removeFromCartIncrementInventory(state, item_id) {
+  const catalog = state.catalog;
+  const cart = state.cart;
+  const item = catalog.find(item => item.id === item_id);
+  if (item){
+    const newCart = removeFromCart(cart, item.id);
+    const newCatalog = incrementInventory(catalog, item.id);
+    return {...state, cart: newCart, catalog: newCatalog}
+  }
+  return state;
+}
+
 export function addToCartAction(item_id) {
   return {
     type: 'ADD_TO_CART',
     payload: { item_id }
   }
+}
+
+function checkInventory(catalog, item_id) {
+  const item = catalog.find(item => item.id === item_id);
+  if (item) {
+    if (item.inventory > 0) {
+      return item;
+    }
+  }
+  return false;
+}
+
+function decrementInventory(catalog, item_id) {
+  const idx = catalog.findIndex(item => item.id === item_id);
+  if (idx !== -1) {
+    const item = { ...catalog[idx], inventory: catalog[idx].inventory-1};
+    const newCatalog = [...catalog];
+    newCatalog[idx] = item;
+    return newCatalog;
+  }
+  return catalog;
+}
+
+function incrementInventory(catalog, item_id) {
+  const idx = catalog.findIndex(item => item.id === item_id);
+  if (idx !== -1) {
+    const item = { ...catalog[idx], inventory: catalog[idx].inventory+1};
+    const newCatalog = [...catalog];
+    newCatalog[idx] = item;
+    return newCatalog;
+  }
+  return catalog;
 }
 
 function removeFromCart(cart, item_id) {
@@ -76,6 +132,18 @@ export function removeFromCartAction(item_id) {
   return {
     type: 'REMOVE_FROM_CART',
     payload: { item_id }
+  }
+}
+
+export function closeCartAction(){
+  return {
+    type: 'CLOSE_CART'
+  }
+}
+
+export function openCartAction(){
+  return {
+    type: 'OPEN_CART'
   }
 }
 
@@ -111,19 +179,31 @@ export default function reducer (state = initialState, action) {
         currentCategory: setCurrentCategory(state.currentCategory, action.payload.currentCategory)
       }
     case 'ADD_TO_CART':
-      return {
-        ...state,
-        cart: addToCart(state.cart, action.payload.item_id)
-      }
+      return addToCartDecrementInventory(state, action.payload.item_id);
+      // return {
+      //   ...state,
+      //   cart: addToCart(state.cart, action.payload.item_id)
+      // }
     case 'REMOVE_FROM_CART':
-      return {
-        ...state,
-        cart: removeFromCart(state.cart, action.payload.item_id)
-      }
+      return removeFromCartIncrementInventory(state, action.payload.item_id);
+      // return {
+      //   ...state,
+      //   cart: removeFromCart(state.cart, action.payload.item_id)
+      // }
     case 'VIEW_ITEM_DETAILS':
       return {
         ...state,
         viewingItem: viewItemDetails(state, action.payload.item_id)
+      }
+    case 'CLOSE_CART':
+      return {
+        ...state,
+        cartIsOpen: false
+      }
+    case 'OPEN_CART':
+      return {
+        ...state,
+        cartIsOpen: true
       }
 
     default:
