@@ -79,6 +79,18 @@ export function removeFromCartAction(item_id) {
   }
 }
 
+export function closeCartAction(){
+  return {
+    type: 'CLOSE_CART'
+  }
+}
+
+export function openCartAction(){
+  return {
+    type: 'OPEN_CART'
+  }
+}
+
 function viewItemDetails(state, item_id) {
   const catalog = state.catalog;
   const product = catalog.find(p => p.id === item_id);
@@ -124,6 +136,16 @@ export default function reducer (state = initialState, action) {
       return {
         ...state,
         viewingItem: viewItemDetails(state, action.payload.item_id)
+      }
+    case 'CLOSE_CART':
+      return {
+        ...state,
+        cartIsOpen: false
+      }
+    case 'OPEN_CART':
+      return {
+        ...state,
+        cartIsOpen: true
       }
 
     default:
