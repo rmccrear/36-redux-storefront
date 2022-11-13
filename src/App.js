@@ -12,8 +12,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setCatalog, setCategories, setCurrentCategory, viewItemDetails, addToCart,
-  openCart, closeCart
+  setCatalog, setCategories, setCurrentCategory, viewItemDetails, addToCart, closeCart
 } from './store';
 
 import './App.css';

@@ -5,6 +5,7 @@ import { act, render, screen } from '@testing-library/react';
 import App from './App';
 
 test('renders learn react link', async () => {
+  // eslint-disable-next-line testing-library/no-unnecessary-act
   await act(() => {
     render(
       <Provider store={store}>
